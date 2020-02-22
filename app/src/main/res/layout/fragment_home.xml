@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    android:layout_height="match_parent"
+    tools:context=".fragment.HomeFragment">
+        <LinearLayout
+            android:padding="10dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ViewFlipper
+                android:id="@+id/slide"
+                android:layout_width="match_parent"
+                android:layout_height="300dp" />
+            <TextView
+                android:layout_marginTop="10dp"
+                android:textColor="#111111"
+                android:textSize="18sp"
+                android:text="Sản Phẩm Bán Chạy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginTop="10dp"
+                android:id="@+id/recyclerbestseller"
+                android:layout_width="match_parent"
+                android:layout_height="240dp"/>
+            <TextView
+                android:layout_marginTop="10dp"
+                android:textColor="#111111"
+                android:textSize="18sp"
+                android:text="Thời Trang Nữ"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerfemale"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="-5dp"
+                android:layout_marginRight="-5dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:layout_marginTop="10dp"
+                android:textColor="#111111"
+                android:textSize="18sp"
+                android:text="Thời Trang Nam"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclermale"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="-5dp"
+                android:layout_marginRight="-5dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+</ScrollView>
