@@ -4,5 +4,5 @@
     <item android:id="@+id/menu_cart"
         android:title="Giỏ hàng"
         app:showAsAction="always"
-        android:icon="@drawable/shopping1"/>
+        android:icon="@drawable/shopping"/>
 </menu>

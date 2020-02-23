@@ -18,15 +18,18 @@ interface ApiInterface {
     @GET("thoitrangnu.php")
     fun getFashionFemale() : Call<ArrayList<Fashion>>
 
+    @GET("thoitrangnam.php")
+    fun getFashionMale() : Call<ArrayList<Fashion>>
+
     @GET("dress.php")
     fun getDress() : Call<ArrayList<Fashion>>
 
-    @POST("fashiondetail.php")
+    @POST("chitietsanpham.php")
     @FormUrlEncoded
     fun getFashionDetail(@Field("ID_Fashion") ID_Fashion:String) : Call<ArrayList<Fashion>>
 
     companion object{
-        var BASE_URL = "http://192.168.5.104/data_fashion_shop/"
+        var BASE_URL = "http://192.168.5.100/data_fashion_shop/"
         fun create():ApiInterface{
             val retrofit = Retrofit.Builder().addConverterFactory(GsonConverterFactory.create()).baseUrl(
                 BASE_URL).build()

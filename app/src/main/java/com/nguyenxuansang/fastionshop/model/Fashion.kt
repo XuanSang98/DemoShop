@@ -7,6 +7,8 @@ data class Fashion(
     val ID_Fashion: String,
     @SerializedName("Name_Fashion")
     val Name_Fashion: String,
+    @SerializedName("PurchasePrice")
+    val PriceOld: String,
     @SerializedName("Price")
     val Price: String,
     @SerializedName("Img_Fasshion")

@@ -8,19 +8,9 @@
     tools:context=".activity.CartActivity">
     <androidx.appcompat.widget.Toolbar
         android:background="@color/colorWhite"
-        app:title="Cart"
         android:id="@+id/tb_cart"
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize">
-        <TextView
-            android:textSize="23dp"
-            android:textColor="#111111"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:text="Cart"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </androidx.appcompat.widget.Toolbar>
+        android:layout_height="?actionBarSize"/>
     <androidx.recyclerview.widget.RecyclerView
         android:background="@color/colorWhite"
         android:id="@+id/recycler_cart"

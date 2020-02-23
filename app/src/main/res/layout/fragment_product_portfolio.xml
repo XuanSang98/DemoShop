@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="10dp"
+    android:paddingRight="10dp"
+    android:paddingLeft="10dp"
+    tools:context=".fragment.ProductPortfolioFragment">
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:textColor="#111111"
+        android:textSize="18sp"
+        android:text="Danh mục thởi trang nữ"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="13dp"
+        android:id="@+id/recycler_danhmucthoitrangnu"
+        android:layout_width="match_parent"
+        android:layout_height="320dp"/>
+    <TextView
+        android:layout_marginTop="10dp"
+        android:textColor="#111111"
+        android:textSize="18sp"
+        android:text="Danh mục thởi trang nam"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="10dp"
+        android:id="@+id/recycler_danhmucthoitrangnam"
+        android:layout_width="match_parent"
+        android:layout_height="341dp"/>
+</LinearLayout>

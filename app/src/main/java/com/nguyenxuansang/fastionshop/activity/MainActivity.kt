@@ -10,16 +10,19 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.navigation.NavigationView
 import com.nguyenxuansang.fastionshop.R
-import com.nguyenxuansang.fastionshop.R.id.menu_home
+import com.nguyenxuansang.fastionshop.fragment.FavoriteFragment
 import com.nguyenxuansang.fastionshop.fragment.HomeFragment
-import com.nguyenxuansang.fastionshop.fragment.MemaleFragment
+import com.nguyenxuansang.fastionshop.fragment.ProductPortfolioFragment
+import com.nguyenxuansang.fastionshop.fragment.ProfileFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_toolbar.*
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     val fragment = HomeFragment()
-    val fragmentFemale = MemaleFragment()
+    val fragmentDanhMucSp = ProductPortfolioFragment()
+    val fragmentYeuThich = FavoriteFragment()
+    val fragmentCaNhan = ProfileFragment()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -27,7 +30,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         init()
         appbar.bringToFront()
         getSupportActionBar()?.setDisplayHomeAsUpEnabled(true);
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.menuc)
         getSupportActionBar()?.setDisplayShowTitleEnabled(false);
         supportActionBar?.setHomeButtonEnabled(true)
         tb.setText("Home")
@@ -49,19 +52,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
     override fun onNavigationItemSelected(p0: MenuItem): Boolean {
         when(p0.itemId){
-            menu_home ->{
+            R.id.menu_trangchu ->{
                 navigateToFragment(fragment)
                 tb.setText("Home")
             }
-            R.id.menu_male ->{
-
+            R.id.menu_danhmucsanpham ->{
+                navigateToFragment(fragmentDanhMucSp)
             }
-            R.id.menu_female ->{
-                navigateToFragment(fragmentFemale)
-                tb.setText("Female")
+            R.id.menu_yeuthich ->{
+                navigateToFragment(fragmentYeuThich)
             }
-            R.id.menu_favorites ->{
-
+            R.id.menu_canhan ->{
+                navigateToFragment(fragmentCaNhan)
             }
         }
         p0.isChecked = true

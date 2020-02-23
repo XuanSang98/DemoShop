@@ -5,22 +5,22 @@
         <item
             android:icon="@drawable/house"
             app:showAsAction="never"
-            android:id="@+id/menu_home"
+            android:id="@+id/menu_trangchu"
             android:title="Trang Chủ" />
         <item
             android:icon="@drawable/shirt"
             app:showAsAction="never"
-            android:id="@+id/menu_male"
+            android:id="@+id/menu_danhmucsanpham"
                 android:title="Danh Mục Sản Phẩm" />
-        <item
-            android:icon="@drawable/skirt"
-            app:showAsAction="never"
-            android:id="@+id/menu_female"
-            android:title="Yêu Thích" />
         <item
             android:icon="@drawable/heart"
             app:showAsAction="never"
-            android:id="@+id/menu_favorites"
+            android:id="@+id/menu_yeuthich"
+            android:title="Yêu Thích" />
+        <item
+            android:icon="@drawable/account"
+            app:showAsAction="never"
+            android:id="@+id/menu_canhan"
             android:title="Cá Nhân" />
     </group>
 </menu>

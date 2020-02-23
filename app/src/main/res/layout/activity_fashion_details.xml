@@ -1,136 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".activity.FashionDetailsActivity">
-    <androidx.appcompat.widget.Toolbar
-        android:background="@color/colorWhite"
-        app:title="Cart"
-        android:id="@+id/tb_fashion_Detail"
-        android:layout_width="match_parent"
-        android:layout_height="?actionBarSize">
-        <TextView
-            android:textSize="23dp"
-            android:textColor="#111111"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:text="Fashion Detail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </androidx.appcompat.widget.Toolbar>
+
     <ImageView
-        android:paddingRight="10dp"
-        android:paddingLeft="10dp"
-        android:layout_below="@+id/tb_fashion_Detail"
-        android:scaleType="fitXY"
-        android:src="@drawable/image_demo_detail"
-        android:background="@color/colorWhite"
         android:id="@+id/img_fashion_detail"
         android:layout_width="match_parent"
-        android:layout_height="450dp"/>
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        android:scaleType="fitXY"
+        android:src="@drawable/anh_demo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/btn_head_fashion_detail"
-        android:layout_marginTop="-40dp"
-        android:layout_marginRight="17dp"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/img_fashion_detail"
-        android:layout_width="wrap_content"
-        android:background="@drawable/heart1"
-        android:layout_height="wrap_content"
-        />
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tb_fashion_Detail"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:theme="@style/CustomActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:background="@color/colorWhite"
-        android:layout_below="@+id/img_fashion_detail"
-        android:padding="10dp"
-        android:orientation="vertical"
+        android:padding="20dp"
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <TextView
-            android:id="@+id/txt_name_detail"
-            android:textColor="#111111"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            android:text="ĐẦM LEN SỌC"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:id="@+id/txt_price_detail"
-            android:layout_marginTop="5dp"
-            android:textColor="#FF0000"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:text="100.000 VNĐ"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:layout_marginTop="30dp"
-            android:textColor="#111111"
-            android:textSize="20sp"
-            android:layout_width="match_parent"
-            android:text="Size"
-            android:layout_height="wrap_content"/>
+        android:layout_height="300dp"
+        android:background="@color/colorWhite"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
         <LinearLayout
-            android:layout_marginTop="10dp"
-            android:weightSum="10"
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="45dp">
-            <Button
-                android:id="@+id/btn_s_fashion_detail"
-                android:layout_marginRight="5dp"
-                android:background="@drawable/boder_button"
-                android:text="S"
-                android:layout_weight="2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"/>
-            <Button
-                android:id="@+id/btn_m_fashion_detail"
-                android:layout_marginRight="5dp"
-                android:background="@drawable/boder_button"
-                android:text="M"
-                android:layout_weight="2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"/>
-            <Button
-                android:id="@+id/btn_l_fashion_detail"
-                android:layout_marginRight="5dp"
-                android:background="@drawable/boder_button"
-                android:text="L"
-                android:layout_weight="2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"/>
-            <Button
-                android:id="@+id/btn_xl_fashion_detail"
-                android:background="@drawable/boder_button"
-                android:text="XL"
-                android:layout_weight="2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"/>
+            android:layout_height="wrap_content">
+            <ImageView
+                android:background="@drawable/qr"
+                android:layout_width="40dp"
+                android:layout_height="40dp"/>
+            <LinearLayout
+                android:gravity="right"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:src="@drawable/heart"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"/>
+            </LinearLayout>
         </LinearLayout>
         <TextView
+            android:id="@+id/txt_giacu_spchitiet"
+            android:layout_marginTop="20dp"
+            android:gravity="right"
+            android:textColor="#111111"
+            android:textSize="20sp"
+            android:text="845.000"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <Button
-            android:id="@+id/btn_addtocart"
-            android:textColor="@color/colorWhite"
+        <View
+            android:layout_marginTop="-17dp"
+            android:layout_marginBottom="17dp"
             android:background="#111111"
-            android:text="ADD TO BAG"
+            android:layout_width="75dp"
+            android:layout_gravity="right"
+            android:layout_height="2dp"/>
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="?actionBarSize"/>
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/txt_tenspchitiet"
+                android:textColor="#111111"
+                android:textSize="20sp"
+                android:text="Đầm Nữ 01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/txt_giamoi_spchitiet"
+                android:gravity="right"
+                android:textColor="#111111"
+                android:textSize="20sp"
+                android:text="845.000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:text="S"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/boder_button"
+                android:layout_width="52dp"
+                android:layout_height="52dp"/>
+            <Button
+                android:text="M"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/boder_button"
+                android:layout_width="52dp"
+                android:layout_height="52dp"/>
+            <Button
+                android:text="L"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/boder_button"
+                android:layout_width="52dp"
+                android:layout_height="52dp"/>
+            <Button
+                android:text="XL"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/boder_button"
+                android:layout_width="52dp"
+                android:layout_height="52dp"/>
+        </LinearLayout>
+        <Button
+            android:id="@+id/btn_muangay"
+            app:elevation="5dp"
+            android:background="@drawable/boder_buttonlogingoogle"
+            android:textColor="#111111"
+            android:text="Mua Ngay"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="right"
+            android:layout_width="120dp"
+            android:layout_height="50dp"/>
     </LinearLayout>
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

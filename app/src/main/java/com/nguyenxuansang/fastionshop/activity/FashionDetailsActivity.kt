@@ -6,13 +6,17 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.View
 import android.widget.Toast
+import android.widget.Toolbar
 import com.bumptech.glide.Glide
 import com.nguyenxuansang.fastionshop.R
 import com.nguyenxuansang.fastionshop.adapter.BestSellerAdapter
 import com.nguyenxuansang.fastionshop.interfaces.ApiInterface
 import com.nguyenxuansang.fastionshop.model.Fashion
 import kotlinx.android.synthetic.main.activity_fashion_details.*
+import kotlinx.android.synthetic.main.activity_toolbar.*
 import retrofit2.Call
 import retrofit2.Response
 
@@ -21,12 +25,17 @@ class FashionDetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fashion_details)
+        setSupportActionBar(tb_fashion_Detail)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.back1)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
         var dem:Int =1
         var arr:ArrayList<Fashion>
         val ID_Fashion = intent.getStringExtra("ID_Fashion")
         Log.d("LOG_INTENT","myValue "+ID_Fashion)
-        val apinterface1 = ApiInterface.create().getFashionDetail(""+ID_Fashion)
-        apinterface1.enqueue(object : retrofit2.Callback<ArrayList<Fashion>> {
+        val api_chitietsanpham = ApiInterface.create().getFashionDetail(""+ID_Fashion)
+        api_chitietsanpham.enqueue(object : retrofit2.Callback<ArrayList<Fashion>> {
             override fun onFailure(call: Call<ArrayList<Fashion>>, t: Throwable) {
 
             }
@@ -38,65 +47,86 @@ class FashionDetailsActivity : AppCompatActivity() {
                 if (response.body() != null) {
                     arr = response.body()!!
                     Glide.with(applicationContext).load(""+arr.get(0).Img_Fasshion).into(img_fashion_detail)
-                    txt_name_detail.text = arr.get(0).Name_Fashion
-                    txt_price_detail.text = arr.get(0).Price
+                    txt_giamoi_spchitiet.text = arr.get(0).Price
+                    txt_tenspchitiet.text = arr.get(0).Name_Fashion
+                    txt_giacu_spchitiet.text = arr.get(0).PriceOld
                 }else{
                     Toast.makeText(applicationContext,"Loi",Toast.LENGTH_LONG).show()
                 }
             }
         })
-        btn_s_fashion_detail.setOnClickListener {
-            btn_s_fashion_detail.setBackgroundColor(Color.RED)
-            btn_s_fashion_detail.setTextColor(Color.WHITE)
-            btn_m_fashion_detail.setBackgroundColor(Color.WHITE)
-            btn_l_fashion_detail.setBackgroundColor(Color.WHITE)
-            btn_xl_fashion_detail.setBackgroundColor(Color.WHITE)
-            btn_l_fashion_detail.setTextColor(Color.BLACK)
-            btn_m_fashion_detail.setTextColor(Color.BLACK)
-            btn_xl_fashion_detail.setTextColor(Color.BLACK)
+        linearLayout.visibility = View.INVISIBLE
+        img_fashion_detail.setOnClickListener {
+            if(linearLayout.visibility == View.INVISIBLE)
+            linearLayout.visibility = View.VISIBLE
+            else
+                linearLayout.visibility = View.INVISIBLE
         }
-        btn_m_fashion_detail.setOnClickListener {
-            btn_m_fashion_detail.setBackgroundColor(Color.RED)
-            btn_m_fashion_detail.setTextColor(Color.WHITE)
-            btn_s_fashion_detail.setBackgroundColor(Color.WHITE)
-            btn_l_fashion_detail.setBackgroundColor(Color.WHITE)
-            btn_xl_fashion_detail.setBackgroundColor(Color.WHITE)
-            btn_l_fashion_detail.setTextColor(Color.BLACK)
-            btn_s_fashion_detail.setTextColor(Color.BLACK)
-            btn_xl_fashion_detail.setTextColor(Color.BLACK)
-        }
-        btn_l_fashion_detail.setOnClickListener {
-            btn_l_fashion_detail.setBackgroundColor(Color.RED)
-            btn_l_fashion_detail.setTextColor(Color.WHITE)
-            btn_s_fashion_detail.setBackgroundColor(Color.WHITE)
-            btn_m_fashion_detail.setBackgroundColor(Color.WHITE)
-            btn_xl_fashion_detail.setBackgroundColor(Color.WHITE)
-            btn_s_fashion_detail.setTextColor(Color.BLACK)
-            btn_m_fashion_detail.setTextColor(Color.BLACK)
-            btn_xl_fashion_detail.setTextColor(Color.BLACK)
-        }
-        btn_xl_fashion_detail.setOnClickListener {
-            btn_xl_fashion_detail.setBackgroundColor(Color.RED)
-            btn_xl_fashion_detail.setTextColor(Color.WHITE)
-            btn_s_fashion_detail.setBackgroundColor(Color.WHITE)
-            btn_m_fashion_detail.setBackgroundColor(Color.WHITE)
-            btn_l_fashion_detail.setBackgroundColor(Color.WHITE)
-            btn_m_fashion_detail.setTextColor(Color.BLACK)
-            btn_s_fashion_detail.setTextColor(Color.BLACK)
-            btn_l_fashion_detail.setTextColor(Color.BLACK)
-        }
-        btn_head_fashion_detail.setOnClickListener {
-            btn_head_fashion_detail.setBackgroundResource(R.drawable.heart2)
-            dem = dem+1
-            if (dem %2==0){
-                btn_head_fashion_detail.setBackgroundResource(R.drawable.heart1)
-            }else{
-                btn_head_fashion_detail.setBackgroundResource(R.drawable.heart2)
-            }
-        }
-        btn_addtocart.setOnClickListener {
+
+//        btn_s_fashion_detail.setOnClickListener {
+//            btn_s_fashion_detail.setBackgroundColor(Color.RED)
+//            btn_s_fashion_detail.setTextColor(Color.WHITE)
+//            btn_m_fashion_detail.setBackgroundColor(Color.WHITE)
+//            btn_l_fashion_detail.setBackgroundColor(Color.WHITE)
+//            btn_xl_fashion_detail.setBackgroundColor(Color.WHITE)
+//            btn_l_fashion_detail.setTextColor(Color.BLACK)
+//            btn_m_fashion_detail.setTextColor(Color.BLACK)
+//            btn_xl_fashion_detail.setTextColor(Color.BLACK)
+//        }
+//        btn_m_fashion_detail.setOnClickListener {
+//            btn_m_fashion_detail.setBackgroundColor(Color.RED)
+//            btn_m_fashion_detail.setTextColor(Color.WHITE)
+//            btn_s_fashion_detail.setBackgroundColor(Color.WHITE)
+//            btn_l_fashion_detail.setBackgroundColor(Color.WHITE)
+//            btn_xl_fashion_detail.setBackgroundColor(Color.WHITE)
+//            btn_l_fashion_detail.setTextColor(Color.BLACK)
+//            btn_s_fashion_detail.setTextColor(Color.BLACK)
+//            btn_xl_fashion_detail.setTextColor(Color.BLACK)
+//        }
+//        btn_l_fashion_detail.setOnClickListener {
+//            btn_l_fashion_detail.setBackgroundColor(Color.RED)
+//            btn_l_fashion_detail.setTextColor(Color.WHITE)
+//            btn_s_fashion_detail.setBackgroundColor(Color.WHITE)
+//            btn_m_fashion_detail.setBackgroundColor(Color.WHITE)
+//            btn_xl_fashion_detail.setBackgroundColor(Color.WHITE)
+//            btn_s_fashion_detail.setTextColor(Color.BLACK)
+//            btn_m_fashion_detail.setTextColor(Color.BLACK)
+//            btn_xl_fashion_detail.setTextColor(Color.BLACK)
+//        }
+//        btn_xl_fashion_detail.setOnClickListener {
+//            btn_xl_fashion_detail.setBackgroundColor(Color.RED)
+//            btn_xl_fashion_detail.setTextColor(Color.WHITE)
+//            btn_s_fashion_detail.setBackgroundColor(Color.WHITE)
+//            btn_m_fashion_detail.setBackgroundColor(Color.WHITE)
+//            btn_l_fashion_detail.setBackgroundColor(Color.WHITE)
+//            btn_m_fashion_detail.setTextColor(Color.BLACK)
+//            btn_s_fashion_detail.setTextColor(Color.BLACK)
+//            btn_l_fashion_detail.setTextColor(Color.BLACK)
+//        }
+//        btn_head_fashion_detail.setOnClickListener {
+//            btn_head_fashion_detail.setBackgroundResource(R.drawable.heart2)
+//            dem = dem+1
+//            if (dem %2==0){
+//                btn_head_fashion_detail.setBackgroundResource(R.drawable.heart1)
+//            }else{
+//                btn_head_fashion_detail.setBackgroundResource(R.drawable.heart2)
+//            }
+//        }
+//        btn_addtocart.setOnClickListener {
+//            val intent = Intent(this,CartActivity::class.java)
+//            startActivity(intent)
+//        }
+        btn_muangay.setOnClickListener {
             val intent = Intent(this,CartActivity::class.java)
             startActivity(intent)
         }
+        tb_fashion_Detail.setNavigationOnClickListener {
+            finish()
+        }
+    }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.menu_actionbar_fsdetail, menu)
+        return true
     }
 }
