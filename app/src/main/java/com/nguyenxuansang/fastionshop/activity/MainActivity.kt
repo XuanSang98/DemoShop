@@ -1,6 +1,7 @@
 package com.nguyenxuansang.fastionshop.activity
 
 import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -14,6 +15,7 @@ import com.nguyenxuansang.fastionshop.fragment.FavoriteFragment
 import com.nguyenxuansang.fastionshop.fragment.HomeFragment
 import com.nguyenxuansang.fastionshop.fragment.ProductPortfolioFragment
 import com.nguyenxuansang.fastionshop.fragment.ProfileFragment
+import com.nguyenxuansang.fastionshop.model.Cart
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_toolbar.*
 
@@ -23,6 +25,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     val fragmentDanhMucSp = ProductPortfolioFragment()
     val fragmentYeuThich = FavoriteFragment()
     val fragmentCaNhan = ProfileFragment()
+    companion object{
+         var arr_cart: ArrayList<Cart>? = arrayListOf()
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -76,6 +81,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
         fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.menu_cart ->{
+                val intent = Intent(this,CartActivity::class.java)
+                startActivity(intent)
+            }
+        }
+        return true
     }
 }
 

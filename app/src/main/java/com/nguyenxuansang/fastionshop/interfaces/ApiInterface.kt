@@ -28,6 +28,10 @@ interface ApiInterface {
     @FormUrlEncoded
     fun getFashionDetail(@Field("ID_Fashion") ID_Fashion:String) : Call<ArrayList<Fashion>>
 
+    @POST("chitietdanhmuc.php")
+    @FormUrlEncoded
+    fun getCatelogDetail(@Field("ID_StylishDetails") ID_StylishDetails:String) : Call<ArrayList<Fashion>>
+
     companion object{
         var BASE_URL = "http://192.168.5.100/data_fashion_shop/"
         fun create():ApiInterface{

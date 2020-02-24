@@ -2,12 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
     android:background="#C0C0C0"
+    android:layout_marginBottom="20dp"
     android:layout_height="150dp">
     <LinearLayout
         android:gravity="center"
         android:layout_width="140dp"
         android:layout_height="match_parent">
         <ImageView
+            android:scaleType="fitXY"
             android:id="@+id/img_cart_item"
             android:layout_marginLeft="25dp"
             android:background="@drawable/image_demo_detail"
