@@ -31,12 +31,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <EditText
+            android:id="@+id/edtSdt"
             android:paddingLeft="20dp"
-            android:hint="Email"
+            android:hint="Phone Number"
             android:background="@drawable/boder_button"
             android:layout_width="match_parent"
             android:layout_height="60dp"/>
         <EditText
+            android:id="@+id/txt_pass"
             android:inputType="textPassword"
             android:paddingLeft="20dp"
             android:hint="Password"

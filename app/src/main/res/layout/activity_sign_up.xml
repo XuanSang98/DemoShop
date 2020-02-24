@@ -32,12 +32,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <EditText
+            android:id="@+id/txt_fullname_signup"
             android:paddingLeft="20dp"
             android:hint="Full Name"
             android:background="@drawable/boder_button"
             android:layout_width="match_parent"
             android:layout_height="60dp"/>
         <EditText
+            android:id="@+id/txt_phone_signup"
             android:inputType="phone"
             android:paddingLeft="20dp"
             android:hint="Phone Number"
@@ -46,6 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"/>
         <EditText
+            android:id="@+id/txt_email_signup"
             android:layout_marginTop="30dp"
             android:paddingLeft="20dp"
             android:hint="E-mail Address"
@@ -53,6 +56,17 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"/>
         <EditText
+            android:id="@+id/txt_address"
+            android:inputType="textPassword"
+            android:paddingLeft="20dp"
+            android:hint="Address"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/boder_button"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"/>
+
+        <EditText
+            android:id="@+id/txt_pass_signup"
             android:inputType="textPassword"
             android:paddingLeft="20dp"
             android:hint="Password"
@@ -61,6 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"/>
         <Button
+            android:id="@+id/btn_signup"
             android:layout_marginRight="120dp"
             android:layout_marginLeft="120dp"
             android:layout_marginTop="40dp"

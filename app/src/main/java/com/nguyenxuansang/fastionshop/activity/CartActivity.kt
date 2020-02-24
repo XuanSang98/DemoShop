@@ -23,6 +23,7 @@ class CartActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.setDisplayShowTitleEnabled(false)
         btn_buy.setOnClickListener {
+
         }
         tb_cart.setNavigationOnClickListener {
             finish()

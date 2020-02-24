@@ -1,6 +1,8 @@
 package com.nguyenxuansang.fastionshop.interfaces
 
+import com.nguyenxuansang.fastionshop.model.Account
 import com.nguyenxuansang.fastionshop.model.Fashion
+import com.nguyenxuansang.fastionshop.model.SignUpMessage
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -32,8 +34,22 @@ interface ApiInterface {
     @FormUrlEncoded
     fun getCatelogDetail(@Field("ID_StylishDetails") ID_StylishDetails:String) : Call<ArrayList<Fashion>>
 
+    @POST("dangkytaikhoan.php")
+    @FormUrlEncoded
+    fun signUp(@Field("FullName") FullName:String,
+               @Field("PhoneNumber") PhoneNumber:String,
+               @Field("EmailAddress") EmailAddress:String,
+               @Field("Password") Password:String,
+               @Field("AccountType") AccountType:String,
+               @Field("Address") Address:String) : Call<ArrayList<SignUpMessage>>
+
+    @POST("dangnhap.php")
+    @FormUrlEncoded
+    fun logIn(@Field("PhoneNumber") PhoneNumber:String,
+              @Field("Password") Password:String) : Call<ArrayList<Account>>
+
     companion object{
-        var BASE_URL = "http://192.168.5.100/data_fashion_shop/"
+        var BASE_URL = "http://192.168.2.221/data_fashion_shop/"
         fun create():ApiInterface{
             val retrofit = Retrofit.Builder().addConverterFactory(GsonConverterFactory.create()).baseUrl(
                 BASE_URL).build()
