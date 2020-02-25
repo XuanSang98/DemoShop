@@ -23,7 +23,8 @@ class CartActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.setDisplayShowTitleEnabled(false)
         btn_buy.setOnClickListener {
-
+            val intent = Intent(application,CustomerInformation::class.java)
+            startActivity(intent)
         }
         tb_cart.setNavigationOnClickListener {
             finish()

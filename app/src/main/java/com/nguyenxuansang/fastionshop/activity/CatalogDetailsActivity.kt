@@ -35,7 +35,7 @@ class CatalogDetailsActivity : AppCompatActivity(),BestSellerOnClick {
         supportActionBar?.setDisplayShowTitleEnabled(false)
         val ID_StylishDetails = intent.getStringExtra("ID_StylishDetails")
         val recycler_catalog= findViewById<RecyclerView>(R.id.recycler_catalog) //id RecyclerView
-        recycler_catalog.layoutManager = GridLayoutManager(this, 2)
+        recycler_catalog.layoutManager = GridLayoutManager(this, 2) as RecyclerView.LayoutManager?
         val api_chitietdanhmuc = ApiInterface.create().getCatelogDetail(""+ID_StylishDetails)
         api_chitietdanhmuc.enqueue(object : retrofit2.Callback<ArrayList<Fashion>> {
             override fun onFailure(call: Call<ArrayList<Fashion>>, t: Throwable) {

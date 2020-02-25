@@ -2,6 +2,7 @@ package com.nguyenxuansang.fastionshop.interfaces
 
 import com.nguyenxuansang.fastionshop.model.Account
 import com.nguyenxuansang.fastionshop.model.Fashion
+import com.nguyenxuansang.fastionshop.model.GoodsOrder
 import com.nguyenxuansang.fastionshop.model.SignUpMessage
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -48,8 +49,16 @@ interface ApiInterface {
     fun logIn(@Field("PhoneNumber") PhoneNumber:String,
               @Field("Password") Password:String) : Call<ArrayList<Account>>
 
+    @POST("diachinhanhang.php")
+    @FormUrlEncoded
+    fun goodsOrders(@Field("CustomerName") CustomerName:String,
+                    @Field("PhoneNumber") PhoneNumber:String,
+                    @Field("Address") Address:String,
+                    @Field("DateOfPurchase") DateOfPurchase:String,
+                    @Field("TotalMoney") TotalMoney:String) : Call<ArrayList<GoodsOrder>>
+
     companion object{
-        var BASE_URL = "http://192.168.2.221/data_fashion_shop/"
+        var BASE_URL = "http://192.168.5.100/data_fashion_shop/"
         fun create():ApiInterface{
             val retrofit = Retrofit.Builder().addConverterFactory(GsonConverterFactory.create()).baseUrl(
                 BASE_URL).build()

@@ -98,24 +98,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <Button
+                android:id="@+id/btn_s"
                 android:text="S"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/boder_button"
                 android:layout_width="52dp"
                 android:layout_height="52dp"/>
             <Button
+                android:id="@+id/btn_m"
                 android:text="M"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/boder_button"
                 android:layout_width="52dp"
                 android:layout_height="52dp"/>
             <Button
+                android:id="@+id/btn_l"
                 android:text="L"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/boder_button"
                 android:layout_width="52dp"
                 android:layout_height="52dp"/>
             <Button
+                android:id="@+id/btn_xl"
                 android:text="XL"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/boder_button"

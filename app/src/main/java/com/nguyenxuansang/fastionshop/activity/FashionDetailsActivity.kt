@@ -68,59 +68,46 @@ class FashionDetailsActivity : AppCompatActivity() {
                 linearLayout.visibility = View.INVISIBLE
         }
 
-//        btn_s_fashion_detail.setOnClickListener {
-//            btn_s_fashion_detail.setBackgroundColor(Color.RED)
-//            btn_s_fashion_detail.setTextColor(Color.WHITE)
-//            btn_m_fashion_detail.setBackgroundColor(Color.WHITE)
-//            btn_l_fashion_detail.setBackgroundColor(Color.WHITE)
-//            btn_xl_fashion_detail.setBackgroundColor(Color.WHITE)
-//            btn_l_fashion_detail.setTextColor(Color.BLACK)
-//            btn_m_fashion_detail.setTextColor(Color.BLACK)
-//            btn_xl_fashion_detail.setTextColor(Color.BLACK)
-//        }
-//        btn_m_fashion_detail.setOnClickListener {
-//            btn_m_fashion_detail.setBackgroundColor(Color.RED)
-//            btn_m_fashion_detail.setTextColor(Color.WHITE)
-//            btn_s_fashion_detail.setBackgroundColor(Color.WHITE)
-//            btn_l_fashion_detail.setBackgroundColor(Color.WHITE)
-//            btn_xl_fashion_detail.setBackgroundColor(Color.WHITE)
-//            btn_l_fashion_detail.setTextColor(Color.BLACK)
-//            btn_s_fashion_detail.setTextColor(Color.BLACK)
-//            btn_xl_fashion_detail.setTextColor(Color.BLACK)
-//        }
-//        btn_l_fashion_detail.setOnClickListener {
-//            btn_l_fashion_detail.setBackgroundColor(Color.RED)
-//            btn_l_fashion_detail.setTextColor(Color.WHITE)
-//            btn_s_fashion_detail.setBackgroundColor(Color.WHITE)
-//            btn_m_fashion_detail.setBackgroundColor(Color.WHITE)
-//            btn_xl_fashion_detail.setBackgroundColor(Color.WHITE)
-//            btn_s_fashion_detail.setTextColor(Color.BLACK)
-//            btn_m_fashion_detail.setTextColor(Color.BLACK)
-//            btn_xl_fashion_detail.setTextColor(Color.BLACK)
-//        }
-//        btn_xl_fashion_detail.setOnClickListener {
-//            btn_xl_fashion_detail.setBackgroundColor(Color.RED)
-//            btn_xl_fashion_detail.setTextColor(Color.WHITE)
-//            btn_s_fashion_detail.setBackgroundColor(Color.WHITE)
-//            btn_m_fashion_detail.setBackgroundColor(Color.WHITE)
-//            btn_l_fashion_detail.setBackgroundColor(Color.WHITE)
-//            btn_m_fashion_detail.setTextColor(Color.BLACK)
-//            btn_s_fashion_detail.setTextColor(Color.BLACK)
-//            btn_l_fashion_detail.setTextColor(Color.BLACK)
-//        }
-//        btn_head_fashion_detail.setOnClickListener {
-//            btn_head_fashion_detail.setBackgroundResource(R.drawable.heart2)
-//            dem = dem+1
-//            if (dem %2==0){
-//                btn_head_fashion_detail.setBackgroundResource(R.drawable.heart1)
-//            }else{
-//                btn_head_fashion_detail.setBackgroundResource(R.drawable.heart2)
-//            }
-//        }
-//        btn_addtocart.setOnClickListener {
-//            val intent = Intent(this,CartActivity::class.java)
-//            startActivity(intent)
-//        }
+        btn_s.setOnClickListener {
+            btn_s.setBackgroundColor(Color.GRAY)
+            btn_s.setTextColor(Color.WHITE)
+            btn_m.setBackgroundColor(Color.WHITE)
+            btn_l.setBackgroundColor(Color.WHITE)
+            btn_xl.setBackgroundColor(Color.WHITE)
+            btn_l.setTextColor(Color.BLACK)
+            btn_m.setTextColor(Color.BLACK)
+            btn_xl.setTextColor(Color.BLACK)
+        }
+        btn_m.setOnClickListener {
+            btn_m.setBackgroundColor(Color.GRAY)
+            btn_m.setTextColor(Color.WHITE)
+            btn_s.setBackgroundColor(Color.WHITE)
+            btn_l.setBackgroundColor(Color.WHITE)
+            btn_xl.setBackgroundColor(Color.WHITE)
+            btn_l.setTextColor(Color.BLACK)
+            btn_s.setTextColor(Color.BLACK)
+            btn_xl.setTextColor(Color.BLACK)
+        }
+        btn_l.setOnClickListener {
+            btn_l.setBackgroundColor(Color.GRAY)
+            btn_l.setTextColor(Color.WHITE)
+            btn_s.setBackgroundColor(Color.WHITE)
+            btn_m.setBackgroundColor(Color.WHITE)
+            btn_xl.setBackgroundColor(Color.WHITE)
+            btn_s.setTextColor(Color.BLACK)
+            btn_m.setTextColor(Color.BLACK)
+            btn_xl.setTextColor(Color.BLACK)
+        }
+        btn_xl.setOnClickListener {
+            btn_xl.setBackgroundColor(Color.GRAY)
+            btn_xl.setTextColor(Color.WHITE)
+            btn_s.setBackgroundColor(Color.WHITE)
+            btn_m.setBackgroundColor(Color.WHITE)
+            btn_l.setBackgroundColor(Color.WHITE)
+            btn_m.setTextColor(Color.BLACK)
+            btn_s.setTextColor(Color.BLACK)
+            btn_l.setTextColor(Color.BLACK)
+        }
         var check  = false
         btn_muangay.setOnClickListener {
             if(MainActivity.arr_cart!!.size>0){

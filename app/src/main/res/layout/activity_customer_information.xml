@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorWhite"
+    android:layout_height="match_parent"
+    tools:context=".activity.CustomerInformation">
+    <androidx.appcompat.widget.Toolbar
+        android:background="#1DAAF1"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize">
+        <ImageView
+            android:src="@drawable/close"
+            android:layout_width="20dp"
+            android:layout_height="20dp"/>
+        <TextView
+            android:layout_marginRight="20dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:text="Địa Chỉ Nhận Hàng"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </androidx.appcompat.widget.Toolbar>
+    <LinearLayout
+        android:padding="15dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:textSize="18sp"
+            android:textColor="#111111"
+            android:text="Tên Người Nhận"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:id="@+id/edt_tennguoinhan"
+            android:layout_marginTop="10dp"
+            android:hint="Nhập Họ Và Tên Người Nhận"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"/>
+        <TextView
+            android:layout_marginTop="15dp"
+            android:textSize="18sp"
+            android:textColor="#111111"
+            android:text="Số điện thoại"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:id="@+id/edt_sdtnguoinhan"
+            android:layout_marginTop="10dp"
+            android:hint="Nhập Số Điện Thoại Nhận Hàng"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"/>
+        <TextView
+            android:layout_marginTop="15dp"
+            android:textSize="18sp"
+            android:textColor="#111111"
+            android:text="Địa chỉ nhận hàng"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:id="@+id/edt_diachinhanhang"
+            android:layout_marginTop="10dp"
+            android:hint="Nhập Địa Chỉ Nhận Hàng"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"/>
+        <Button
+            android:id="@+id/btn_giaodendiachinay"
+            android:layout_marginTop="50dp"
+            android:text="Giao Đến Địa Chỉ Này"
+            android:background="#DD0000"
+            android:textColor="@color/colorWhite"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"/>
+    </LinearLayout>
+</LinearLayout>
