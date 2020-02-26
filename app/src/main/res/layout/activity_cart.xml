@@ -18,12 +18,32 @@
         android:layout_below="@+id/tb_cart"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
-    <Button
-        android:id="@+id/btn_buy"
-        android:textColor="@color/colorWhite"
-        android:text="BUY"
-        android:background="#111111"
+    <LinearLayout
+        android:layout_marginBottom="10dp"
+        android:weightSum="1"
         android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"/>
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="0.5"
+            android:id="@+id/btn_buy"
+            android:textColor="@color/colorWhite"
+            android:text="Mua Hàng"
+            android:background="#111111"
+            android:layout_width="0dp"
+            android:layout_height="?actionBarSize"/>
+        <Button
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="0.5"
+            android:id="@+id/btn_tieptucmuahang"
+            android:textColor="@color/colorWhite"
+            android:text="Tiếp Tục Mua Hàng"
+            android:background="#111111"
+            android:layout_width="0dp"
+            android:layout_height="?actionBarSize"/>
+    </LinearLayout>
 </RelativeLayout>

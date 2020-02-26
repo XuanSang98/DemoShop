@@ -26,10 +26,14 @@ class FashionDetailsActivity : AppCompatActivity() {
     var idsp:String?=null
     var img:String?=null
     var arr:ArrayList<Fashion> = arrayListOf()
+    companion object{
+        var size:String ? =null
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fashion_details)
         setSupportActionBar(tb_fashion_Detail)
+        size==null
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.back1)
         supportActionBar?.setDisplayShowHomeEnabled(true)
@@ -77,6 +81,7 @@ class FashionDetailsActivity : AppCompatActivity() {
             btn_l.setTextColor(Color.BLACK)
             btn_m.setTextColor(Color.BLACK)
             btn_xl.setTextColor(Color.BLACK)
+            size = "S"
         }
         btn_m.setOnClickListener {
             btn_m.setBackgroundColor(Color.GRAY)
@@ -87,6 +92,7 @@ class FashionDetailsActivity : AppCompatActivity() {
             btn_l.setTextColor(Color.BLACK)
             btn_s.setTextColor(Color.BLACK)
             btn_xl.setTextColor(Color.BLACK)
+            size = "M"
         }
         btn_l.setOnClickListener {
             btn_l.setBackgroundColor(Color.GRAY)
@@ -97,6 +103,7 @@ class FashionDetailsActivity : AppCompatActivity() {
             btn_s.setTextColor(Color.BLACK)
             btn_m.setTextColor(Color.BLACK)
             btn_xl.setTextColor(Color.BLACK)
+            size = "L"
         }
         btn_xl.setOnClickListener {
             btn_xl.setBackgroundColor(Color.GRAY)
@@ -107,39 +114,46 @@ class FashionDetailsActivity : AppCompatActivity() {
             btn_m.setTextColor(Color.BLACK)
             btn_s.setTextColor(Color.BLACK)
             btn_l.setTextColor(Color.BLACK)
+            size = "XL"
         }
         var check  = false
         btn_muangay.setOnClickListener {
-            if(MainActivity.arr_cart!!.size>0){
-                for(i in 0 until MainActivity.arr_cart!!.size){
-                    if(MainActivity.arr_cart!!.get(i).idSp == ID_Fashion){
-                        MainActivity.arr_cart!!.get(i).soLuongSp = MainActivity.arr_cart!!.get(i).soLuongSp + 1
-                        if(MainActivity.arr_cart!!.get(i).soLuongSp >=10){
-                            MainActivity.arr_cart!!.get(0).soLuongSp = 10
+            if(size==null){
+                Toast.makeText(applicationContext,"Bạn vui lòng chọn Size để tiếp tục mua hàng",Toast.LENGTH_LONG).show()
+            }else{
+                if(MainActivity.arr_cart!!.size>0){
+                    for(i in 0 until MainActivity.arr_cart!!.size){
+                        if(MainActivity.arr_cart!!.get(i).idSp == ID_Fashion){
+                            MainActivity.arr_cart!!.get(i).soLuongSp = MainActivity.arr_cart!!.get(i).soLuongSp + 1
+                            if(MainActivity.arr_cart!!.get(i).soLuongSp >=10){
+                                MainActivity.arr_cart!!.get(0).soLuongSp = 10
+                            }
+                            check = true
                         }
-                        check = true
                     }
-                }
-                if(check == false){
+                    if(check == false){
+                        val imageModel = Cart()
+                        imageModel.setNames(txt_tenspchitiet.text.toString())
+                        imageModel.setId(idsp.toString())
+                        imageModel.setImg(img.toString())
+                        imageModel.setGia(txt_giamoi_spchitiet.text.toString())
+                        imageModel.setSl(1)
+                        imageModel.setSizes(size.toString())
+                        MainActivity.arr_cart!!.add(imageModel)
+                    }
+                }else{
                     val imageModel = Cart()
                     imageModel.setNames(txt_tenspchitiet.text.toString())
                     imageModel.setId(idsp.toString())
                     imageModel.setImg(img.toString())
                     imageModel.setGia(txt_giamoi_spchitiet.text.toString())
                     imageModel.setSl(1)
+                    imageModel.setSizes(size.toString())
                     MainActivity.arr_cart!!.add(imageModel)
                 }
-            }else{
-                val imageModel = Cart()
-                imageModel.setNames(txt_tenspchitiet.text.toString())
-                imageModel.setId(idsp.toString())
-                imageModel.setImg(img.toString())
-                imageModel.setGia(txt_giamoi_spchitiet.text.toString())
-                imageModel.setSl(1)
-                MainActivity.arr_cart!!.add(imageModel)
+                val intent = Intent(this,CartActivity::class.java)
+                startActivity(intent)
             }
-            val intent = Intent(this,CartActivity::class.java)
-            startActivity(intent)
         }
         tb_fashion_Detail.setNavigationOnClickListener {
             finish()

@@ -55,8 +55,15 @@ interface ApiInterface {
                     @Field("PhoneNumber") PhoneNumber:String,
                     @Field("Address") Address:String,
                     @Field("DateOfPurchase") DateOfPurchase:String,
-                    @Field("TotalMoney") TotalMoney:String) : Call<ArrayList<GoodsOrder>>
-
+                    @Field("TotalMoney") TotalMoney:String) : Call<ArrayList<SignUpMessage>>
+    @POST("chitietdonhang.php")
+    @FormUrlEncoded
+    fun orderDetails(@Field("Id_GoodSorders") Id_GoodSorders:String,
+                    @Field("Id_Fashion") Id_Fashion:String,
+                    @Field("NameFashion") NameFashion:String,
+                    @Field("Number") Number:String,
+                    @Field("Size") Size:String,
+                     @Field("TotalMoney") TotalMoney:String) : Call<ArrayList<SignUpMessage>>
     companion object{
         var BASE_URL = "http://192.168.5.100/data_fashion_shop/"
         fun create():ApiInterface{

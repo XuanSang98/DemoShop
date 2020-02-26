@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.nguyenxuansang.fastionshop.R
 import com.nguyenxuansang.fastionshop.adapter.CartAdapter
+import com.nguyenxuansang.fastionshop.fragment.HomeFragment
 import kotlinx.android.synthetic.main.activity_cart.*
 
 class CartActivity : AppCompatActivity() {
@@ -33,5 +34,10 @@ class CartActivity : AppCompatActivity() {
         rce_cart.layoutManager = LinearLayoutManager(this)
         cartAdapter = CartAdapter(MainActivity.arr_cart!!,this)
         rce_cart.adapter = cartAdapter
+        val btn_tieptucmuahang= findViewById<Button>(R.id.btn_tieptucmuahang)
+        btn_tieptucmuahang.setOnClickListener {
+            val intent = Intent(this,MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

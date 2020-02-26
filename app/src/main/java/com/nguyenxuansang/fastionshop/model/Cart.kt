@@ -6,6 +6,14 @@ class Cart() {
     var giaSp: String? = null
     var imgSp: String? = null
     var soLuongSp: Int = 0
+    var size:String?=null
+    fun getSizes(): String {
+        return size.toString()
+    }
+
+    fun setSizes(name: String) {
+        this.size = name
+    }
     fun getNames(): String {
         return tenSp.toString()
     }
