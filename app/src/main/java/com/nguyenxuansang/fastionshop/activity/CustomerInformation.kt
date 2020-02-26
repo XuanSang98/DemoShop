@@ -3,7 +3,9 @@ package com.nguyenxuansang.fastionshop.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
 import android.util.Log
+import android.widget.EditText
 import android.widget.Toast
 import com.android.volley.Request
 import com.android.volley.RequestQueue
@@ -14,6 +16,7 @@ import com.nguyenxuansang.fastionshop.R
 import com.nguyenxuansang.fastionshop.fragment.HomeFragment
 import com.nguyenxuansang.fastionshop.interfaces.ApiInterface
 import com.nguyenxuansang.fastionshop.interfaces.Server
+import com.nguyenxuansang.fastionshop.model.Account
 import com.nguyenxuansang.fastionshop.model.GoodsOrder
 import com.nguyenxuansang.fastionshop.model.SignUpMessage
 import kotlinx.android.synthetic.main.activity_customer_information.*
@@ -28,11 +31,35 @@ class CustomerInformation : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_customer_information)
+        var tenNguoiNhan:String?=null
         var c = Calendar.getInstance();
-        var sdf = SimpleDateFormat("MM-dd-yyyy");
+        var sdf = SimpleDateFormat("yyyy-MM-dd");
+        var edt_nguoinhan = findViewById<EditText>(R.id.edt_tennguoinhan)
         var strDate:String = sdf.format(c.getTime());
+        println("--------------------------------------------------"+strDate)
+        val api_account = ApiInterface.create().getAccount(LoginActivity.id_account.toString())
+        api_account.enqueue(object : Callback<ArrayList<Account>>{
+            override fun onFailure(call: Call<ArrayList<Account>>, t: Throwable) {
+
+            }
+
+            override fun onResponse(
+                call: Call<ArrayList<Account>>,
+                response: retrofit2.Response<ArrayList<Account>>
+            ) {
+                var arr:ArrayList<Account>
+                arr = response.body()!!
+                edt_nguoinhan.setText(arr.get(0).fullName)
+                edt_diachinhanhang.setText(arr.get(0).address)
+                edt_sdtnguoinhan.setText(arr.get(0).phoneNumber)
+            }
+
+        })
+        img_cancel.setOnClickListener {
+            finish()
+        }
         btn_giaodendiachinay.setOnClickListener {
-            val api_diachinhanhang = ApiInterface.create().goodsOrders(edt_tennguoinhan.text.toString(),edt_sdtnguoinhan.text.toString(),edt_diachinhanhang.text.toString(),strDate,"10000")
+            val api_diachinhanhang = ApiInterface.create().goodsOrders(LoginActivity.id_account.toString(),edt_tennguoinhan.text.toString(),edt_sdtnguoinhan.text.toString(),edt_diachinhanhang.text.toString(),strDate,"10000")
             api_diachinhanhang.enqueue(object :Callback<ArrayList<SignUpMessage>>{
                 override fun onFailure(call: Call<ArrayList<SignUpMessage>>, t: Throwable) {
                 }
@@ -56,7 +83,7 @@ class CustomerInformation : AppCompatActivity() {
                                 response: retrofit2.Response<ArrayList<SignUpMessage>>
                             ) {
                                 MainActivity.arr_cart!!.clear()
-                                val intent = Intent(applicationContext,HomeFragment::class.java)
+                                val intent = Intent(applicationContext,MainActivity::class.java)
                                 startActivity(intent)
                             }
                         })

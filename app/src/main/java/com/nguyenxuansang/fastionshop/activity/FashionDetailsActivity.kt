@@ -17,15 +17,19 @@ import com.nguyenxuansang.fastionshop.adapter.BestSellerAdapter
 import com.nguyenxuansang.fastionshop.interfaces.ApiInterface
 import com.nguyenxuansang.fastionshop.model.Cart
 import com.nguyenxuansang.fastionshop.model.Fashion
+import com.nguyenxuansang.fastionshop.model.Like
+import com.nguyenxuansang.fastionshop.model.SignUpMessage
 import kotlinx.android.synthetic.main.activity_fashion_details.*
 import kotlinx.android.synthetic.main.activity_toolbar.*
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
 
 class FashionDetailsActivity : AppCompatActivity() {
     var idsp:String?=null
     var img:String?=null
     var arr:ArrayList<Fashion> = arrayListOf()
+    var linkImg:String?=null
     companion object{
         var size:String ? =null
     }
@@ -59,6 +63,7 @@ class FashionDetailsActivity : AppCompatActivity() {
                     txt_tenspchitiet.text = arr.get(0).Name_Fashion
                     txt_giacu_spchitiet.text = arr.get(0).PriceOld
                     img = arr.get(0).Img_Fasshion
+                    linkImg = arr.get(0).Img_Fasshion
                 }else{
                     Toast.makeText(applicationContext,"Loi",Toast.LENGTH_LONG).show()
                 }
@@ -157,6 +162,98 @@ class FashionDetailsActivity : AppCompatActivity() {
         }
         tb_fashion_Detail.setNavigationOnClickListener {
             finish()
+        }
+        var check1 ="0"
+        var check2 :String ="0"
+        val apicheckLike = ApiInterface.create().checkLike(LoginActivity.id_account.toString(),ID_Fashion)
+        apicheckLike.enqueue(object :Callback<ArrayList<Like>>{
+            override fun onFailure(call: Call<ArrayList<Like>>, t: Throwable) {
+
+            }
+
+            override fun onResponse(
+                call: Call<ArrayList<Like>>,
+                response: Response<ArrayList<Like>>
+            ) {
+                if(response.body()!!.toString() == "[]"){
+                    println("HELLLLO")
+                }else{
+                    var arr:ArrayList<Like>
+                    arr = response.body()!!
+                    check2 = "1"
+                    if(arr.get(0).CheckLike == "1"){
+                      favorite.setImageResource(R.drawable.star1)
+                    }else{
+                       favorite.setImageResource(R.drawable.star2)
+                    }
+                }
+            }
+        })
+        favorite.setOnClickListener {
+            if(check1=="0"){
+                if(check2=="1"){
+                    favorite.setImageResource(R.drawable.star1)
+                    check1= "1"
+                    val apiVisiableFavorite = ApiInterface.create().unVisiableFavorite(check1,LoginActivity.id_account.toString(),ID_Fashion)
+                    apiVisiableFavorite.enqueue(object :Callback<ArrayList<SignUpMessage>>{
+                        override fun onFailure(call: Call<ArrayList<SignUpMessage>>, t: Throwable) {
+
+                        }
+
+                        override fun onResponse(
+                            call: Call<ArrayList<SignUpMessage>>,
+                            response: Response<ArrayList<SignUpMessage>>
+                        ) {
+
+                        }
+
+                    })
+                    println("==============12===================="+check1)
+                }
+                if(check2=="0"){
+                    favorite.setImageResource(R.drawable.star1)
+                    check1= "1"
+                    val apiVisiableFavorite = ApiInterface.create().visiableFavorite(LoginActivity.id_account.toString(),ID_Fashion,txt_tenspchitiet.text.toString(),linkImg.toString(),txt_giamoi_spchitiet.text.toString(),check1)
+                    apiVisiableFavorite.enqueue(object :Callback<ArrayList<SignUpMessage>>{
+                        override fun onFailure(call: Call<ArrayList<SignUpMessage>>, t: Throwable) {
+
+                        }
+
+                        override fun onResponse(
+                            call: Call<ArrayList<SignUpMessage>>,
+                            response: Response<ArrayList<SignUpMessage>>
+                        ) {
+
+                        }
+
+                    })
+                    println("==================4546================"+check1)
+                }
+
+            }
+            else {
+
+                if (check2 == "1") {
+                    favorite.setImageResource(R.drawable.star2)
+                    check1 = "0"
+                    val apiVisiableFavorite = ApiInterface.create()
+                        .unVisiableFavorite(check1, LoginActivity.id_account.toString(), ID_Fashion)
+                    apiVisiableFavorite.enqueue(object : Callback<ArrayList<SignUpMessage>> {
+                        override fun onFailure(call: Call<ArrayList<SignUpMessage>>, t: Throwable) {
+
+                        }
+
+                        override fun onResponse(
+                            call: Call<ArrayList<SignUpMessage>>,
+                            response: Response<ArrayList<SignUpMessage>>
+                        ) {
+
+                        }
+
+                    })
+                    println("=================================="+check1)
+                }
+            }
         }
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

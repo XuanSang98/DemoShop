@@ -14,6 +14,9 @@ import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
     var arr:ArrayList<Account> = arrayListOf()
+    companion object{
+        var id_account :String ?= null
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -37,6 +40,7 @@ class LoginActivity : AppCompatActivity() {
                     if(arr.get(0).phoneNumber.equals(edtSdt.text.toString()) && arr.get(0).passWord.equals(txt_pass.text.toString())){
                         val intent = Intent(application,MainActivity::class.java)
                         startActivity(intent)
+                        id_account = arr.get(0).idAccount
                     }else{
                         Toast.makeText(application,"Tên tài khoản hoặc mật khẩu không chính xác",Toast.LENGTH_LONG).show()
                     }
